@@ -8,6 +8,8 @@ a {
     color: #e03a59;
 }
 
+/* --------------------------------------------------------------------- */
+/* HOME CONTAINER */
 .home-bg {
     height: 90vh;
     background: url(./pictures/home_bg.jpeg);
@@ -21,18 +23,15 @@ a {
     top: 0;
     padding: 30px;
 }
-
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 10vh;
 }
-
 .title {
     font-size: 4em;
 }
-
 .nav-item {
     margin-right: 15px;
     color: black;
@@ -45,7 +44,6 @@ a {
     margin-right: 15px;
     padding: 5px 7px;
 }
-
 .home-info {
     width: 50%;
     display: flex;
@@ -57,4 +55,44 @@ a {
 }
 .home-info p {
     text-align: left;
+}
+
+/* --------------------------------------------------------------------- */
+/* SERVICES CONTAINER */
+.services-container{
+    margin: 1% 7% 5% 7%;
+}
+h2 {
+    font-size: 2em;
+    margin-bottom: 5%;
+}
+.services-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icon {
+    /* height: 120px; */
+    width: 120px;
+}
+.icon p {
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------- */
+/* OUR STORY CONTAINER */
+.our-story-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e03a59;
+    color: white;
+    padding: 1% 10%;
+}
+.our-story-btn {
+    background-color: #e3c67d;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 10px;
+    width: 20%;
+    height: 40px;
 }
