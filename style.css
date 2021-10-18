@@ -1,11 +1,17 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 a {
     text-decoration: none;
 }
 .pink {
     color: #e03a59;
+}
+.pink-bg {
+    background-color: #e03a59 !important;
+    color: white;
 }
 
 /* --------------------------------------------------------------------- */
@@ -50,6 +56,7 @@ a {
     flex-direction: column;
     text-align: left;
     margin-left: 10%;
+    margin-top: 8%;
 }
 .home-title {
     font-size: 2em;
@@ -85,6 +92,7 @@ h2 {
 .our-story-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #e03a59;
     color: white;
     padding: 1% 10%;
@@ -124,6 +132,27 @@ h2 {
     text-align: center;
     padding: 2% 5% 0 5%;
     height: auto;
+    position: relative;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 3em solid #b5834a; 
+    border-right: 3em solid transparent;
+    position: absolute;
+    top: -1%;
+    left: -3%;
+}
+/* Надпись Popular на треугольнике */
+.rotatable {
+    display: inline-block;
+    transform: rotate(-45deg);
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    top: -2em;
+    bottom: -1em;
+    font-size: smaller;
 }
 .price-div {
     margin: 15% 0%;
@@ -141,4 +170,105 @@ h2 {
     cursor: pointer;
     background-color: #e3c67d;
     padding: 8px 10px;
+}
+
+/* --------------------------------------------------------------------- */
+/* GALLERY CONTAINER */
+.gallery-container {
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    margin-left: 10%;
+    margin-top: 8%;
+}
+.testimonial {
+    /* width: 50%; */
+    /* width: 900px; */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-right: 5%;
+}
+.testimonial h2 {
+    text-align: center;
+}
+.testimonial-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5%;
+}
+.testimonial-item img {
+    box-shadow: 0px -2px 10px -4px rgb(50, 50, 50, 0.5);
+}
+.testimonial-item-info {
+    border-radius: 5px;
+    padding: 15px;
+    width: 80%;
+}
+.testimonial-item-info-author {
+    margin-top: 5%;
+}
+.author2-photo {
+    margin-left: -5%;
+    margin-top: 3%;
+}
+
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gallery-items {
+    display: flex;
+    justify-content: start;
+    /* width: 400px */
+}
+.pic1 {
+    width: 260px;
+    height: 180px;
+    margin-left: 15%;
+}
+.pic2 {
+    width: 180px;
+    height: 110px;
+    margin-left: -8%;
+    margin-top: 10%;
+}
+.pic3 {
+    width: 260px;
+    height: 180px;
+    margin-top: -3%;
+    margin-left: -8%;
+}
+.pic4 {
+    width: 240px;
+    height: 160px;
+    margin-left: -15%;
+    margin-top: 11%;
+}
+.pic5 {
+    width: 240px;
+    height: 180px;
+    margin-left: -10%;
+}
+.view-more {
+    text-decoration: underline;
+    color: #e03a59;
+    margin-top: 2%;
+}
+
+/* --------------------------------------------------------------------- */
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #36332f;
+    height: 8em;
+    padding: 0 10%;
+    color: white;
+}
+.footer-logo {
+    font-size: 3em;
 }
