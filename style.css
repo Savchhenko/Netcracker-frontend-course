@@ -80,11 +80,11 @@ h2 {
     justify-content: space-between;
 }
 .icon {
-    /* height: 120px; */
     width: 120px;
 }
 .icon p {
     text-align: center;
+    margin-top: 20%;
 }
 
 /* --------------------------------------------------------------------- */
@@ -176,14 +176,10 @@ h2 {
 /* GALLERY CONTAINER */
 .gallery-container {
     display: flex;
-    /* justify-content: space-between; */
-    /* align-items: center; */
     margin-left: 10%;
     margin-top: 8%;
 }
 .testimonial {
-    /* width: 50%; */
-    /* width: 900px; */
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -222,7 +218,6 @@ h2 {
 .gallery-items {
     display: flex;
     justify-content: start;
-    /* width: 400px */
 }
 .pic1 {
     width: 260px;
@@ -271,4 +266,56 @@ footer {
 }
 .footer-logo {
     font-size: 3em;
+}
+
+/* --------------------------------------------------------------------- */
+/* MODAL FORM */
+.modal {
+    width: 100%;
+    height: 100%;
+}
+.modal-form {
+    position: absolute;
+    right: 10%;
+    top: 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e03a59;
+    color: white;
+    width: 20em;
+    height: auto;
+    padding: 2%;
+    border-radius: 5px;
+}
+.modal-form h3 {
+    margin-bottom: 10%;
+}
+.modal-form-input {
+    margin-bottom: 7%;
+    height: 3em;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding-left: 10px;
+}
+.checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.checkbox input {
+    margin-right: 15px;
+}
+.form-btn {
+    background-color: black;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-top: 15px;
+    padding: 15px 0;
+    cursor: pointer;
 }

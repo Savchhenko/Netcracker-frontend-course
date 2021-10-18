@@ -18,14 +18,14 @@
                 <span class="title pink">Travel</span>
             </div>
             <nav class="nav">
-                <a href="#" class="active">HOME</a>
-                <a href="#" class="nav-item">ABOUT</a>
-                <a href="#" class="nav-item">SERVICES</a>
-                <a href="#" class="nav-item">GALLERY</a>
-                <a href="#" class="nav-item">CONTACT</a>
+                <a href="#home" class="active">HOME</a>
+                <a href="#about" class="nav-item">ABOUT</a>
+                <a href="#services" class="nav-item">SERVICES</a>
+                <a href="#gallery" class="nav-item">GALLERY</a>
+                <a href="#contact" class="nav-item">CONTACT</a>
             </nav>
         </header>
-        <div class="home-info">
+        <div class="home-info" id="home">
             <div class="home-title">
                 <h1><span class="pink">TRAVEL IS</span> 
                     <br>BEAUTIFUL
@@ -33,9 +33,24 @@
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur dolor unde fuga sapiente iure nam voluptatum quos, inventore dolore ipsum? Reiciendis minus beatae ipsa eligendi eos, numquam quasi consequuntur adipisci.</p>
         </div>
+        <div class="modal">
+            <form class="modal-form">
+                <h3>REQUEST A QUOTE</h3>
+                <input type="text" class="modal-form-input" placeholder="Full Name">
+                <input type="text" class="modal-form-input" placeholder="Email Adress">
+                <input type="text" class="modal-form-input" placeholder="Phone Number">
+                <input type="text" class="modal-form-input" placeholder="Country">
+                <div class="checkbox">
+                    <input type="checkbox" name="acception" id="acception">
+                    <label for="acception">I accept the terms & conditions</label>
+                </div>
+                <button class="form-btn" type="submit">SEND</button>
+            </form>
+        </div>
+        <!-- /.modal -->
     </div>
     <!-- /.home-container -->
-    <div class="services-container">
+    <div class="services-container" id="services">
         <h2><span class="pink">OUR</span> SERVICES</h2>
         <div class="services-icons">
             <div class="icon">
@@ -61,10 +76,10 @@
         </div>
     </div>
     <!-- /.services-container -->
-    <div class="our-story-container">
+    <div class="our-story-container" id="about">
         <p>We are in business for over 6 years providing amasing services to client<br>
            and people love them to the core. View our story no know more.</p>
-        <button class="our-story-btn">OUR STORY</button>
+        <button class="our-story-btn" onclick="window.location.href='#';">OUR STORY</button>
     </div>
     <!-- /.our-story-container -->
     <div class="pricing-container">
@@ -80,7 +95,7 @@
                     <span>--</span><br>
                     <span>--</span><br>
                 </div>
-                <button class="price-btn">TRY</button>
+                <button class="price-btn" type="button">TRY</button>
             </div>
             <!-- /.card -->
             <div class="card">
@@ -94,7 +109,7 @@
                     <span>Unlimited Data</span><br>
                     <span>--</span>
                 </div>
-                <button class="price-btn pink-bg">SIGN UP</button>
+                <button class="price-btn pink-bg" type="button">SIGN UP</button>
             </div>
             <!-- /.card -->
             <div class="card">
@@ -107,14 +122,14 @@
                     <span>Unlimited Data</span><br>
                     <span>Whatever you need</span>
                 </div>
-                <button class="price-btn">SIGN UP</button>
+                <button class="price-btn" type="button">SIGN UP</button>
             </div>
             <!-- /.card -->
         </div>
         <!-- /.pricing-cards -->
     </div>
     <!-- /.pricing-container -->
-    <div class="gallery-container">
+    <div class="gallery-container" id="gallery">
         <div class="testimonial">
             <h2>TESTIMONIAL</h2>
             <div class="testimonial-item">
@@ -150,7 +165,7 @@
         <!-- /.gallery -->
     </div>
     <!-- /.gallery-container -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="footer-info">
             <p>All Rights Reserved | 2016 | Designed with love by <span class="pink">DesignCoon</span></p>
         </div>
