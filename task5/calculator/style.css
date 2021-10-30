@@ -62,3 +62,6 @@ main {
     align-items: center;
     justify-content: center;
 }
+.colomn div span {
+    cursor: default;
+}
