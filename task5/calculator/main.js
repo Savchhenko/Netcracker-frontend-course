@@ -25,7 +25,7 @@ let outputTextElem = document.querySelector('.output-text');
 
 function addValueToOutput(elem) {
     let outputText = outputTextElem.textContent;
-    if(outputText == 0) {
+    if(Number(outputText) === 0) {
         outputText = elem.textContent; //поменяли значение
         outputTextElem.innerHTML = outputText; //отразили это значение на странице
     } else {
@@ -47,7 +47,7 @@ for (let i=0; i < numbers.length; i++) {
 divisionElem.addEventListener('click', () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "/") {
-        if(lastSymbolOfOutput == "*" || lastSymbolOfOutput == "-" || lastSymbolOfOutput == "+") {
+        if(lastSymbolOfOutput === "*" || lastSymbolOfOutput === "-" || lastSymbolOfOutput === "+") {
             removeLastValueFromOutput();
         }
         addValueToOutput(divisionElem);
@@ -57,7 +57,7 @@ divisionElem.addEventListener('click', () => {
 multiplicationElem.addEventListener('click', () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "*") {
-        if(lastSymbolOfOutput == "/" || lastSymbolOfOutput == "-" || lastSymbolOfOutput == "+") {
+        if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "-" || lastSymbolOfOutput === "+") {
             removeLastValueFromOutput();
         }
         addValueToOutput(multiplicationElem);
@@ -67,7 +67,7 @@ multiplicationElem.addEventListener('click', () => {
 subtractionElem.addEventListener('click', () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "-") {
-        if(lastSymbolOfOutput == "/" || lastSymbolOfOutput == "*" || lastSymbolOfOutput == "+") {
+        if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "*" || lastSymbolOfOutput === "+") {
             removeLastValueFromOutput();
         }
         addValueToOutput(subtractionElem);
@@ -77,7 +77,7 @@ subtractionElem.addEventListener('click', () => {
 additionElem.addEventListener('click', () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "+") {
-        if(lastSymbolOfOutput == "/" || lastSymbolOfOutput == "*" || lastSymbolOfOutput == "-") {
+        if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "*" || lastSymbolOfOutput === "-") {
             removeLastValueFromOutput();
         }
         addValueToOutput(additionElem);
