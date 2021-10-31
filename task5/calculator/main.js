@@ -20,7 +20,7 @@ const divisionElem = document.getElementById('division'),
     dotElem = document.getElementById('dot');
 
 const numbers = [oneElem, twoElem, threeElem, fourElem, fiveElem, sixElem, sevenElem, eightElem, nineElem, zeroElem];
-let outputTextElem = document.querySelector('.output-text');
+const outputTextElem = document.querySelector('.output-text');
 
 
 function addValueToOutput(elem) {
@@ -35,9 +35,7 @@ function addValueToOutput(elem) {
 }
 
 function removeLastValueFromOutput() {
-    let outputText = outputTextElem.textContent;
-    let newOutputText = outputText.slice(0, outputText.length-1);
-    outputTextElem.innerHTML = newOutputText;
+    outputTextElem.innerHTML = outputTextElem.textContent.slice(0, outputTextElem.textContent.length-1);
 }
 
 for (let i=0; i < numbers.length; i++) {
@@ -84,8 +82,38 @@ additionElem.addEventListener('click', () => {
     }
 });
 
+squareRootElem.addEventListener('click', () => {
+    let outputText = outputTextElem.innerHTML;
+    if(Number.isInteger(Number(outputText))) {
+        outputTextElem.innerHTML = Math.sqrt(Number(outputText));
+    } else {
+        outputTextElem.innerHTML = '0';
+        alert('Введите число, из которого вы хотите извлечь квадратный корень.')
+    }
+});
 
-squareRootElem.addEventListener('click', (event) => {console.log(event.target);});
-squaringElem.addEventListener('click', (event) => {console.log(event.target);});
-deletingElem.addEventListener('click', (event) => {console.log(event.target);});
-resetElem.addEventListener('click', (event) => {console.log(event.target);});
+squaringElem.addEventListener('click', () => {
+    if(Number.isInteger(Number(outputTextElem.innerHTML))) {
+        outputTextElem.innerHTML = Number(outputTextElem.innerHTML)**2;
+    } else {
+        outputTextElem.innerHTML = '0';
+        alert('Введите число, которое вы хотите возвести в квадрат.');
+    }
+});
+
+equalElem.addEventListener('click', () => {
+    let newOutputText = eval(outputTextElem.textContent);
+    outputTextElem.innerHTML = newOutputText;
+});
+
+resetElem.addEventListener('click', () => {
+    outputTextElem.innerHTML = 0;
+});
+
+deletingElem.addEventListener('click', () => {
+    if(Number(outputTextElem.textContent.length) === 1) {
+        outputTextElem.innerHTML = '0';
+    } else {
+        outputTextElem.innerHTML = outputTextElem.textContent.slice(0, -1);
+    }
+});
