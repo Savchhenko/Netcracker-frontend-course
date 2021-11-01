@@ -1,31 +1,34 @@
-const divisionElem = document.getElementById('division'),
-    multiplicationElem = document.getElementById('multiplication'),
-    subtractionElem = document.getElementById('subtraction'),
-    additionElem = document.getElementById('addition'),
-    squareRootElem = document.getElementById('square-root'),
-    squaringElem = document.getElementById('squaring'),
-    deletingElem = document.getElementById('deleting'),
-    resetElem = document.getElementById('reset'),
-    oneElem = document.getElementById('one'),
-    twoElem = document.getElementById('two'),
-    threeElem = document.getElementById('three'),
-    fourElem = document.getElementById('four'),
-    fiveElem = document.getElementById('five'),
-    sixElem = document.getElementById('six'),
-    sevenElem = document.getElementById('seven'),
-    eightElem = document.getElementById('eight'),
-    nineElem = document.getElementById('nine'),
-    zeroElem = document.getElementById('zero'),
-    equalElem = document.getElementById('equal'),
-    dotElem = document.getElementById('dot');
+const divisionElem = document.getElementById("division"),
+    multiplicationElem = document.getElementById("multiplication"),
+    subtractionElem = document.getElementById("subtraction"),
+    additionElem = document.getElementById("addition"),
+    squareRootElem = document.getElementById("square-root"),
+    squaringElem = document.getElementById("squaring"),
+    deletingElem = document.getElementById("deleting"),
+    resetElem = document.getElementById("reset"),
+    oneElem = document.getElementById("one"),
+    twoElem = document.getElementById("two"),
+    threeElem = document.getElementById("three"),
+    fourElem = document.getElementById("four"),
+    fiveElem = document.getElementById("five"),
+    sixElem = document.getElementById("six"),
+    sevenElem = document.getElementById("seven"),
+    eightElem = document.getElementById("eight"),
+    nineElem = document.getElementById("nine"),
+    zeroElem = document.getElementById("zero"),
+    equalElem = document.getElementById("equal"),
+    dotElem = document.getElementById("dot");
 
 const numbers = [oneElem, twoElem, threeElem, fourElem, fiveElem, sixElem, sevenElem, eightElem, nineElem, zeroElem];
-const outputTextElem = document.querySelector('.output-text');
+const outputTextElem = document.querySelector(".output-text");
 
 
 function addValueToOutput(elem) {
     let outputText = outputTextElem.textContent;
-    if(Number(outputText) === 0) {
+    if(outputText === "0.") {
+        outputText += elem.textContent;
+        outputTextElem.innerHTML = outputText;
+    } else if(Number(outputText) === 0) {
         outputText = elem.textContent; //поменяли значение
         outputTextElem.innerHTML = outputText; //отразили это значение на странице
     } else {
@@ -38,11 +41,16 @@ function removeLastValueFromOutput() {
     outputTextElem.innerHTML = outputTextElem.textContent.slice(0, outputTextElem.textContent.length-1);
 }
 
+//добавляет обработчик на цифры
 for (let i=0; i < numbers.length; i++) {
-    numbers[i].addEventListener('click', () => {addValueToOutput(numbers[i])});
+    numbers[i].addEventListener("click", () => {addValueToOutput(numbers[i])});
 }
 
-divisionElem.addEventListener('click', () => {
+dotElem.addEventListener("click", () => {
+    outputTextElem.textContent += dotElem.textContent;
+})
+
+divisionElem.addEventListener("click", () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "/") {
         if(lastSymbolOfOutput === "*" || lastSymbolOfOutput === "-" || lastSymbolOfOutput === "+") {
@@ -52,7 +60,7 @@ divisionElem.addEventListener('click', () => {
     }
 });
 
-multiplicationElem.addEventListener('click', () => {
+multiplicationElem.addEventListener("click", () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "*") {
         if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "-" || lastSymbolOfOutput === "+") {
@@ -62,7 +70,7 @@ multiplicationElem.addEventListener('click', () => {
     }
 });
 
-subtractionElem.addEventListener('click', () => {
+subtractionElem.addEventListener("click", () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "-") {
         if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "*" || lastSymbolOfOutput === "+") {
@@ -72,7 +80,7 @@ subtractionElem.addEventListener('click', () => {
     }
 });
 
-additionElem.addEventListener('click', () => {
+additionElem.addEventListener("click", () => {
     let lastSymbolOfOutput = outputTextElem.textContent.toString().slice(-1);
     if(lastSymbolOfOutput !== "+") {
         if(lastSymbolOfOutput === "/" || lastSymbolOfOutput === "*" || lastSymbolOfOutput === "-") {
@@ -82,37 +90,37 @@ additionElem.addEventListener('click', () => {
     }
 });
 
-squareRootElem.addEventListener('click', () => {
+squareRootElem.addEventListener("click", () => {
     let outputText = outputTextElem.innerHTML;
     if(Number.isInteger(Number(outputText))) {
         outputTextElem.innerHTML = Math.sqrt(Number(outputText));
     } else {
-        outputTextElem.innerHTML = '0';
-        alert('Введите число, из которого вы хотите извлечь квадратный корень.')
+        outputTextElem.innerHTML = "0";
+        alert("Введите положительное число, из которого вы хотите извлечь квадратный корень.")
     }
 });
 
-squaringElem.addEventListener('click', () => {
+squaringElem.addEventListener("click", () => {
     if(Number.isInteger(Number(outputTextElem.innerHTML))) {
         outputTextElem.innerHTML = Number(outputTextElem.innerHTML)**2;
     } else {
-        outputTextElem.innerHTML = '0';
-        alert('Введите число, которое вы хотите возвести в квадрат.');
+        outputTextElem.innerHTML = "0";
+        alert("Введите число, которое вы хотите возвести в квадрат.");
     }
 });
 
-equalElem.addEventListener('click', () => {
+equalElem.addEventListener("click", () => {
     let newOutputText = eval(outputTextElem.textContent);
     outputTextElem.innerHTML = newOutputText;
 });
 
-resetElem.addEventListener('click', () => {
+resetElem.addEventListener("click", () => {
     outputTextElem.innerHTML = 0;
 });
 
-deletingElem.addEventListener('click', () => {
+deletingElem.addEventListener("click", () => {
     if(Number(outputTextElem.textContent.length) === 1) {
-        outputTextElem.innerHTML = '0';
+        outputTextElem.innerHTML = "0";
     } else {
         outputTextElem.innerHTML = outputTextElem.textContent.slice(0, -1);
     }
