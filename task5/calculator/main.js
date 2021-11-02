@@ -22,23 +22,21 @@ const divisionElem = document.getElementById("division"),
 const numbers = [oneElem, twoElem, threeElem, fourElem, fiveElem, sixElem, sevenElem, eightElem, nineElem, zeroElem];
 const outputTextElem = document.querySelector(".output-text");
 
-
 function addValueToOutput(elem) {
     let outputText = outputTextElem.textContent;
     if(outputText === "0.") {
         outputText += elem.textContent;
         outputTextElem.innerHTML = outputText;
     } else if(Number(outputText) === 0) {
-        outputText = elem.textContent; //поменяли значение
-        outputTextElem.innerHTML = outputText; //отразили это значение на странице
+        outputTextElem.innerHTML = elem.textContent; 
     } else {
         outputText += elem.textContent;
         outputTextElem.innerHTML = outputText;
     }
 }
 
-function removeLastValueFromOutput() {
-    outputTextElem.innerHTML = outputTextElem.textContent.slice(0, outputTextElem.textContent.length-1);
+let removeLastValueFromOutput = function () {
+    outputTextElem.innerHTML = outputTextElem.textContent.slice(0, -1);
 }
 
 //добавляет обработчик на цифры
@@ -92,7 +90,7 @@ additionElem.addEventListener("click", () => {
 
 squareRootElem.addEventListener("click", () => {
     let outputText = outputTextElem.innerHTML;
-    if(Number.isInteger(Number(outputText))) {
+    if(Number(outputText) >= 0) {
         outputTextElem.innerHTML = Math.sqrt(Number(outputText));
     } else {
         outputTextElem.innerHTML = "0";
@@ -101,7 +99,7 @@ squareRootElem.addEventListener("click", () => {
 });
 
 squaringElem.addEventListener("click", () => {
-    if(Number.isInteger(Number(outputTextElem.innerHTML))) {
+    if(Number(outputTextElem.innerHTML)) {
         outputTextElem.innerHTML = Number(outputTextElem.innerHTML)**2;
     } else {
         outputTextElem.innerHTML = "0";
@@ -122,6 +120,6 @@ deletingElem.addEventListener("click", () => {
     if(Number(outputTextElem.textContent.length) === 1) {
         outputTextElem.innerHTML = "0";
     } else {
-        outputTextElem.innerHTML = outputTextElem.textContent.slice(0, -1);
+        removeLastValueFromOutput();
     }
 });
