@@ -14,14 +14,19 @@ const outputTextElem = document.querySelector(".output-text");
 
 function addValueToOutput(elem) {
     let outputText = outputTextElem.textContent;
-    if (outputText === "0.") {
+
+    // Функция для демонстрации замыкания
+    function addAndDisplayTextFromElemToOutput() {
         outputText += elem.textContent;
         outputTextElem.innerHTML = outputText;
+    }
+
+    if (outputText === "0.") {
+        addAndDisplayTextFromElemToOutput();
     } else if (Number(outputText) === 0) {
         outputTextElem.innerHTML = elem.textContent; 
     } else {
-        outputText += elem.textContent;
-        outputTextElem.innerHTML = outputText;
+        addAndDisplayTextFromElemToOutput();
     }
 }
 
