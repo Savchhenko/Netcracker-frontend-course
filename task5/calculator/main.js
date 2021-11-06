@@ -18,7 +18,7 @@ function addValueToOutput(elem) {
     // Функция для демонстрации замыкания
     function addAndDisplayTextFromElemToOutput() {
         outputText += elem.textContent;
-        outputTextElem.innerHTML = outputText;
+        return outputTextElem.innerHTML = outputText;
     }
 
     if (outputText === "0.") {
