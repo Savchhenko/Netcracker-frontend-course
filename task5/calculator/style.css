@@ -13,6 +13,7 @@ main {
     align-items: center;
     justify-content: center;
 }
+
 .container {
     border: 1px solid grey;
     width: 40%;
@@ -20,14 +21,17 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 .output {
     width: 100%;
     height: 1em;
     padding: 2em 1em;
 }
+
 .output-text {
     text-align: end;
 }
+
 .horizontal {
     display: flex;
     flex-direction: row;
@@ -35,14 +39,17 @@ main {
     justify-content: space-between;
     padding: 1em 2em;   
 }
+
 .operations {
     width: 100%;
     text-align: center;
 }
+
 .operations span {
     font-weight: normal !important;
     cursor: default;
 }
+
 .vertical {
     padding: 1em 2em;   
     display: flex;
@@ -52,18 +59,21 @@ main {
     height: 100%;
     background-color: #dedede;
 }
+
 .colomn {
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
 }
+
 .colomn div {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .colomn div span {
     cursor: default;
 }
