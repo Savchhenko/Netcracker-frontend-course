@@ -36,13 +36,14 @@
         <div class="modal">
             <form class="modal-form">
                 <h3>REQUEST A QUOTE</h3>
-                <input type="text" class="modal-form-input" placeholder="Name">
-                <input type="text" class="modal-form-input" placeholder="Surname">
-                <input type="text" class="modal-form-input" placeholder="Email Adress">
-                <input type="text" class="modal-form-input" placeholder="Phone Number">
-                <input type="text" class="modal-form-input" placeholder="Massage">
+                <input type="text" name="name" class="modal-form-input name required" placeholder="Name" minlength="2" required>
+                <input type="text" name="surname" class="modal-form-input surname required" placeholder="Surname" minlength="2" required>
+                <input type="email" name="email" class="modal-form-input email required" placeholder="Email Adress" required>
+                <input type="tel" name="phone" class="modal-form-input phone" placeholder="Phone Number">
+                <label for="message">A place for feedback:</label>
+                <textarea class="modal-form-textarea required" name="massage" id="message" cols="30" rows="10"></textarea>
                 <div class="checkbox">
-                    <input type="checkbox" name="acception" id="acception">
+                    <input type="checkbox" name="acception" id="acception" value="1">
                     <label for="acception">I accept the terms & conditions</label>
                 </div>
                 <button class="form-btn" type="submit">SEND</button>
@@ -175,5 +176,7 @@
         <!-- /.footer-logo -->
     </footer>
     <!-- /.footer -->
+
+    <script src="./main.js"></script>
 </body>
 </html>
