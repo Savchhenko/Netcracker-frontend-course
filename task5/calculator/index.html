@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image/png" href="./pictures/favicon.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="output">
+                <p class="output-text">0</p>
+            </div>
+            <!-- /.output -->
+            <div class="horizontal">
+                <div class="operations" id="square-root">
+                    <span>&radic;</span>
+                </div>
+                <!-- /.rooting -->
+                <div class="operations" id="squaring">
+                    <span>x&sup2;</span>
+                </div>
+                <!-- /.squaring -->
+                <div class="operations" id="deleting">
+                    <img src="./pictures/delete-icon.png" alt="deleting">
+                </div>
+                <!-- /.deleting -->
+                <div class="operations" id="reset">
+                    <span>C</span>
+                </div>
+                <!-- /.reset -->
+            </div>
+            <!-- /.horizontal -->
+            <div class="vertical">
+                <div class="colomn">
+                    <div class="number"><span>7</span></div>
+                    <div class="number"><span>4</span></div>
+                    <div class="number"><span>1</span></div>
+                    <div id="dot"><span>.</span></div>
+                </div>
+                <!-- /.colomn-->
+                <div class="colomn">
+                    <div class="number"><span>8</span></div>
+                    <div class="number"><span>5</span></div>
+                    <div class="number"><span>2</span></div>
+                    <div class="number"><span>0</span></div>
+                </div>
+                <!-- /.colomn-->
+                <div class="colomn">
+                    <div class="number"><span>9</span></div> 
+                    <div class="number"><span>6</span></div>
+                    <div class="number"><span>3</span></div>
+                    <div id="equal"><span>=</span></div>
+                </div>
+                <!-- /.colomn-->
+                <div class="colomn">
+                    <div id="division"><span>/</span></div>
+                    <div id="multiplication"><span>*</span></div>
+                    <div id="subtraction"><span>-</span></div>
+                    <div id="addition"><span>+</span></div>
+                </div>
+                <!-- /.colomn-->
+            </div>
+            <!-- /.vertical -->
+        </div>
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>
