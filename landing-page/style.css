@@ -376,6 +376,6 @@ footer {
 }
 
 .required {
-    border: 1px solid #7d2939;
-    box-shadow:0 0 15px #f7bac5;
+    border: 2px solid black;
+    box-shadow:0 0 15px #5e5a5a;
 }

@@ -36,14 +36,14 @@
         <div class="modal">
             <form class="modal-form">
                 <h3>REQUEST A QUOTE</h3>
-                <input type="text" name="name" class="modal-form-input name required" placeholder="Name" minlength="2" required>
-                <input type="text" name="surname" class="modal-form-input surname required" placeholder="Surname" minlength="2" required>
-                <input type="email" name="email" class="modal-form-input email required" placeholder="Email Adress" required>
-                <input type="tel" name="phone" class="modal-form-input phone" placeholder="Phone Number">
+                <input type="text" name="name" class="modal-form-input form-elem name required" oninput="saveToLocalStorage(this.name, this.value)" placeholder="Name" minlength="2" required>
+                <input type="text" name="surname" class="modal-form-input form-elem surname required" oninput="saveToLocalStorage(this.name, this.value)" placeholder="Surname" minlength="2" required>
+                <input type="email" name="email" class="modal-form-input form-elem email required" oninput="saveToLocalStorage(this.name, this.value)" placeholder="some@some.some" required>
+                <input type="tel" name="phone" class="modal-form-input form-elem phone" oninput="saveToLocalStorage(this.name, this.value)" placeholder="+X(XXX)XX-XX-XXX">
                 <label for="message">A place for feedback:</label>
-                <textarea class="modal-form-textarea required" name="massage" id="message" cols="30" rows="10"></textarea>
+                <textarea class="modal-form-textarea form-elem required" name="message" oninput="saveToLocalStorage(this.name, this.value)" id="message" cols="30" rows="10" required></textarea>
                 <div class="checkbox">
-                    <input type="checkbox" name="acception" id="acception" value="1">
+                    <input type="checkbox" name="acception" id="acception">
                     <label for="acception">I accept the terms & conditions</label>
                 </div>
                 <button class="form-btn" type="submit">SEND</button>
