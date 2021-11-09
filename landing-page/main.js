@@ -6,6 +6,7 @@ const emailElem = document.querySelector(".email");
 const phoneElem = document.querySelector(".phone");
 const textareaElem = document.querySelector(".modal-form-textarea");
 
+// заполнение полей формы, если страница была закрыта до отправки этой формы
 window.onload = function() {
     nameElem.value = localStorage.getItem("name") || [];
     surnameElem.value = localStorage.getItem("surname") || [];
