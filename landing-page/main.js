@@ -18,21 +18,21 @@ function saveToLocalStorage(key, value) {
     localStorage.setItem(key, value);
 }
 
-function formValidation(emailObj, phoneObj) {
-    email = emailObj.value;
-    phone = phoneObj.value;
+function formValidation(name, surname, email, phone) {
     let result = "";
 
-    if (!/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i.test(email)) {
+    if (!/^([а-яё][А-ЯЁ]+|[a-z][A-Z]+)$/i.test(name)) {
+        alert("Please enter right name");
+    } else if (!/^([а-яё][А-ЯЁ]+|[a-z][A-Z]+)$/i.test(surname)) {
+        alert("Please enter right surname");
+    } else if (!/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i.test(email)) {
         alert("Please enter the email like this 'some@some.some'");
-        return result = "false";
     } else if (phone.length > 0 && !/^\+\d{1}\(\d{3}\)\d{2}-\d{2}-\d{3}$/.test(phone)) {
-        alert("Please enter your phone number like this +9(999)99-99-999");
-        return result = "false";
+        alert("Please enter your phone number like this +7(999)99-99-999");
     } else {
-        // formElems.forEach((elem) => {
-        //     elem.classList.remove("required");
-        // });
+        formElems.forEach((elem) => {
+            elem.classList.remove("required");
+        });
         return result = "true";
     }
 }
@@ -67,13 +67,23 @@ formElem.addEventListener("blur", () => {
 formElem.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = getDataFromForm(formElem);
-    const validationResult = formValidation(data[2], data[3]);
+    const validationResult = formValidation(data[0].value, data[1].value, data[2].value, data[3].value);
+
+    let cookies = document.cookie
+        .split("; ");
+    console.log(cookies);
+
     if (!data[5].value) {
         alert("Please confirm that you accept terms and conditions")
+    }
+    if (cookies.includes(`${data[0].value}=${data[1].value}=the request has been sent`)) {
+        alert(`${data[0].value} ${data[1].value}, your request is being processed`);
+        event.target.reset();
     } else if (validationResult === "true") {
         event.target.reset();
-        alert("Your request has been successfully sent");
+        document.cookie = `${data[0].value}=${data[1].value}=the request has been sent`;
+        alert(`${data[0].value} ${data[1].value}, thank you for your request!`);
     }
     localStorage.clear();
-    localStorage.setItem("Form", JSON.stringify(data));
+    localStorage.setItem("Form", JSON.stringify(data));  
 });
