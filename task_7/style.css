@@ -16,6 +16,7 @@
 
 table {
     width: 80vw;
+    box-shadow: 8px 7px 10px grey;
 }
 
 th, td {
@@ -33,10 +34,17 @@ tr {
 
 td {
     cursor: pointer;
+    text-align: end;
+    font-family: sans-serif;
+    padding-right: 10px;
 }
 
 td:hover {
     background-color: #c7c1c1;
+}
+
+.category {
+    border-left: 1px solid gray;
 }
 
 .options {
@@ -45,9 +53,9 @@ td:hover {
     margin-top: 5vh;
 }
 
-.options button {
-    height: 8vh;
-    width: 10vw;
+.options-btn {
+    height: 9vh;
+    width: auto;
     margin-right: 2vw;
     padding: 10px;
     cursor: pointer;
@@ -70,7 +78,7 @@ td:hover {
 }
 
 .modal-content {
-    width: 18vw;
+    width: auto;
     height: 50vh;
     background-color: white;
     border-radius: 10px;
@@ -78,6 +86,7 @@ td:hover {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding: 3%;
 }
 
 .modal-content-input {
