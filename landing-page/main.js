@@ -19,23 +19,45 @@ function saveToLocalStorage(key, value) {
     localStorage.setItem(key, value);
 }
 
-function formValidation(name, surname, email, phone) {
-    let result = "";
-
+//проверка как имени так и фамилии - type
+const nameValidation = function(type, name) {
     if (!/^([а-яё][А-ЯЁ]+|[a-z][A-Z]+)$/i.test(name)) {
-        alert("Please enter right name");
-    } else if (!/^([а-яё][А-ЯЁ]+|[a-z][A-Z]+)$/i.test(surname)) {
-        alert("Please enter right surname");
-    } else if (!/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i.test(email)) {
+        alert(`Please enter the correct ${type}`);
+        return false;
+    }
+    return true;
+}
+
+const emailValidation = function(email) {
+    if (!/^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i.test(email)) {
         alert("Please enter the email like this 'some@some.some'");
-    } else if (phone.length > 0 && !/^\+\d{1}\(\d{3}\)\d{2}-\d{2}-\d{3}$/.test(phone)) {
+        return false;
+    }
+    return true;
+}
+
+const phoneValidation = function(phone) {
+    if (phone.length > 0 && !/^\+\d{1}\(\d{3}\)\d{2}-\d{2}-\d{3}$/.test(phone)) {
         alert("Please enter your phone number like this +7(999)99-99-999");
-    } else {
+        return false;
+    }
+    return true;
+}
+
+function formValidation(data) {
+    let result = "";
+    const name = data[0].value;
+    const surname = data[1].value;
+    const email = data[2].value;
+    const phone = data[3].value;
+
+    result = nameValidation("name", name) && nameValidation("surname", surname) && emailValidation(email) && phoneValidation(phone);
+    if (result) {
         formElems.forEach((elem) => {
             elem.classList.remove("required");
         });
-        return result = "true";
     }
+    return result;
 }
 
 function getDataFromForm(formNode) {
@@ -68,11 +90,9 @@ formElem.addEventListener("blur", () => {
 formElem.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = getDataFromForm(formElem);
-    const validationResult = formValidation(data[0].value, data[1].value, data[2].value, data[3].value);
+    const validationResult = formValidation(data);
 
-    let cookies = document.cookie
-        .split("; ");
-    console.log(cookies);
+    let cookies = document.cookie.split("; ");
 
     if (!data[5].value) {
         alert("Please confirm that you accept terms and conditions")
@@ -80,11 +100,11 @@ formElem.addEventListener("submit", (event) => {
     if (cookies.includes(`${data[0].value}=${data[1].value}=the request has been sent`)) {
         alert(`${data[0].value} ${data[1].value}, your request is being processed`);
         event.target.reset();
-    } else if (validationResult === "true") {
+    } else if (validationResult === true) {
         event.target.reset();
         document.cookie = `${data[0].value}=${data[1].value}=the request has been sent`;
         alert(`${data[0].value} ${data[1].value}, thank you for your request!`);
     }
-    localStorage.clear();
-    localStorage.setItem("Form", JSON.stringify(data));  
+    localStorage.clear(); 
+    saveToLocalStorage("Form", JSON.stringify(data));
 });
