@@ -1,38 +1,78 @@
-const tableCellsArr = [...document.getElementsByTagName("td")],
-    optionsBtnsArr = [...document.querySelectorAll(".options-btn")],
+const optionsBtnsArr = [...document.querySelectorAll(".options-btn")],
     modalWindow = document.querySelector(".modal-window"),
-    modalContent = document.querySelector(".modal-content"),
-    modalBtn = document.querySelector(".modal-content-btn");
-let inputText = document.querySelector('input[type="text"]');
+    modalBtn = document.querySelector(".modal-content-btn"),
+    addRowBtn = document.querySelector(".add-row"),
+    deleteRowBtn = document.querySelector(".delete-row"),
+    tableElem = document.querySelector(".table-elem");
+let inputText = document.querySelector('input[type="text"]'),
+    categoryCellsArr = [...document.querySelectorAll(".category")];
 
 let selectedCell = [];
+let selectedRow = [];
 
-function checkCellWasSelected() {
-    const pressedCell = document.querySelectorAll(".active");
-    if (pressedCell.length === 0) {
-        alert("Сперва нажмите на ячейку");
-        return false;
-    } else if (pressedCell.length > 1) {
-        Array.from(pressedCell).forEach((elem) => {
+//Убирает background-color с дргуих ячеек
+function deleteOtherSelectedCells() {
+    const pressedCells = document.querySelectorAll(".active");
+    if (pressedCells.length > 1) {
+        Array.from(pressedCells).forEach((elem) => {
             elem.classList.remove("active");
         })
         selectedCell.classList.add("active");
+        return true;
     }
     return true;
 }
 
+//Проверяет что пользователь нажал ячейку перед тем как нажать кнопки Добавить/Редактировать/Удалить запись
+function checkCellWasSelected() {
+    const pressedCells = document.querySelectorAll(".active");
+    if (pressedCells.length === 0) {
+        alert("Сперва нажмите на ячейку");
+        return false;
+    }
+    return true;
+}
+
+//Выбирает ячейку при нажатии, задает ей background-color, который прописан в классе active
 function selectsTheCell(elem) {
     elem.target.classList.toggle("active");
     selectedCell = elem.target;
-    checkCellWasSelected();
+    deleteOtherSelectedCells();
 }
 
-tableCellsArr.forEach((elem) => {
+//Задает background-color выбранной строке
+function categoryCellsHandler(elem) {
+    const pressedElem = document.querySelectorAll(".active");
+    selectedRow = elem.target.parentNode;
+    pressedElem.forEach((elem) => {
+        elem.classList.remove("active");
+    });
+    selectedRow.classList.add("active");
+}
+
+//Добавляет значение к выбранную ячейку
+function addValueToCell() {
+    selectedCell.innerHTML = inputText.value;
+}
+
+//Добавляет обработчик на каждую ячейку
+const addClickListenerToAllCells = function () {
+    let tableCellsArr = [...document.getElementsByTagName("td")];
+    tableCellsArr.forEach((elem) => {
+        elem.addEventListener("click", (elem) => {
+            selectsTheCell(elem);
+        });
+    });
+};
+
+//Добавляет обработчик клика на каждую из строк
+categoryCellsArr.forEach((elem) => {
     elem.addEventListener("click", (elem) => {
-        selectsTheCell(elem);
+        categoryCellsHandler(elem);
     });
 });
 
+//Добавляет обработчик на каждую из трех кнопок Добавить/Редактировать/Удалить запись и определяет поведение в зависимости, какая кнопка была нажата
 optionsBtnsArr.forEach((elem) => {
     elem.addEventListener("click", () => {
         if (checkCellWasSelected()) { 
@@ -51,20 +91,55 @@ optionsBtnsArr.forEach((elem) => {
     })
 })
 
-function addValueToCell() {
-    console.log(selectedCell.innerHTML);
-    selectedCell.innerHTML = inputText.value;
-}
-
+//Кнопка "Подтвердить" в модальном окне, добавляет запись в ячейку и закрывает модальное окно при нажатии
 modalBtn.addEventListener("click", () => {
     addValueToCell();
     inputText.value = "";
     modalWindow.style.display = "none";
 });
 
+//Закрывает модальное окно при клике вне его содержимого
 modalWindow.addEventListener("click", (event) => {
     if (event.target.classList.toString() === "modal-window") {
         modalWindow.style.display = "none";
     }
 });
+
+//Добавляет строку в таблицу
+addRowBtn.addEventListener("click", () => {
+    let categoryName = "";
+    while (!categoryName) {
+        categoryName = prompt("Введите название категории:");
+    }
+    const tr = document.createElement("tr");
+    const row = `
+        <th class="category">${categoryName}</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    `
+    tableElem.appendChild(tr);
+    tr.innerHTML = row;
+
+    tr.addEventListener("click", (tr) => {
+        categoryCellsHandler(tr);
+    });
+
+    addClickListenerToAllCells();
+});
+
+//Удаляет строку из таблицы
+deleteRowBtn.addEventListener("click", () => {
+    if (selectedRow.length == 0) {
+        alert("Сперва выберите строку")
+    } else {
+        Array.from(tableElem.childNodes)[1].removeChild(selectedRow);
+    }
+});
+
+addClickListenerToAllCells();
 
