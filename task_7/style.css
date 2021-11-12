@@ -47,14 +47,18 @@ td:hover {
     border-left: 1px solid gray;
 }
 
+.border-left {
+    border-left: 1px solid gray;
+}
+
 .options {
     display: flex;
     justify-content: center;
     margin-top: 5vh;
 }
 
-.options-btn {
-    height: 9vh;
+.options button {
+    height: 7vh;
     width: auto;
     margin-right: 2vw;
     padding: 10px;
