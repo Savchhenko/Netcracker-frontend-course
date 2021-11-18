@@ -44,12 +44,12 @@ const phoneValidation = function(phone) {
     return true;
 }
 
-function formValidation(data) {
+function formValidation(nameObj, surnameObj, emailObj, phoneObj) {
     let result = "";
-    const name = data[0].value;
-    const surname = data[1].value;
-    const email = data[2].value;
-    const phone = data[3].value;
+    const name = nameObj.value;
+    const surname = surnameObj.value;
+    const email = emailObj.value;
+    const phone = phoneObj.value;
 
     result = nameValidation("name", name) && nameValidation("surname", surname) && emailValidation(email) && phoneValidation(phone);
     if (result) {
@@ -70,7 +70,7 @@ function getDataFromForm(formNode) {
             return { name, value };
         })
         .filter((item) => !!item.name); //убрали элементы без названия, т.е. кнопку
-        return data;
+    return data;
 }
 
 formElem.addEventListener("focus", () => {
@@ -90,20 +90,21 @@ formElem.addEventListener("blur", () => {
 formElem.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = getDataFromForm(formElem);
-    const validationResult = formValidation(data);
+    const [name, surname, email, phone, , acception] = data;
+    const validationResult = formValidation(name, surname, email, phone);
 
     let cookies = document.cookie.split("; ");
 
-    if (!data[5].value) {
+    if (!acception.value) {
         alert("Please confirm that you accept terms and conditions")
     }
-    if (cookies.includes(`${data[0].value}=${data[1].value}=the request has been sent`)) {
-        alert(`${data[0].value} ${data[1].value}, your request is being processed`);
+    if (cookies.includes(`${name.value}=${surname.value}=the request has been sent`)) {
+        alert(`${name.value} ${surname.value}, your request is being processed`);
         event.target.reset();
     } else if (validationResult === true) {
         event.target.reset();
-        document.cookie = `${data[0].value}=${data[1].value}=the request has been sent`;
-        alert(`${data[0].value} ${data[1].value}, thank you for your request!`);
+        document.cookie = `${name.value}=${surname.value}=the request has been sent`;
+        alert(`${name.value} ${surname.value}, thank you for your request!`);
     }
     localStorage.clear(); 
     saveToLocalStorage("Form", JSON.stringify(data));
