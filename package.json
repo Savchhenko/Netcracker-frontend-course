@@ -1,7 +1,7 @@
 {
   "name": "fs_alexandra_savchenko",
   "version": "1.0.0",
-  "description": "Я студентка четвёртого курса по специальности \"Информатика и вычислительная техника\" в ВГУ.",
+  "description": "I'm the forth year student at Voronezh State University. My specialty is Computer Science and Computer Engineering",
   "main": "index.js",
   "dependencies": {
     "gulp-concat": "^2.6.1",
