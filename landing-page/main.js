@@ -90,7 +90,7 @@ formElem.addEventListener("blur", () => {
 formElem.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = getDataFromForm(formElem);
-    const [name, surname, email, phone, , acception] = data;
+    const [name, surname, email, phone, _, acception] = data;
     const validationResult = formValidation(name, surname, email, phone);
 
     let cookies = document.cookie.split("; ");
