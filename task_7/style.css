@@ -28,6 +28,12 @@ th, td {
     border-right: none;
 }
 
+thead {
+    font-size: 2rem;
+    background: linear-gradient(to top left, powderblue, pink);
+    color: white;
+}
+
 tr {
     height: 7vh;
 }
@@ -58,12 +64,13 @@ td:hover {
 }
 
 .options button {
-    height: 7vh;
+    height: auto;
     width: auto;
     margin-right: 2vw;
-    padding: 10px;
+    padding: 20px;
     cursor: pointer;
     border-radius: 30px;
+    background: linear-gradient(to top left, powderblue, pink);
 }
 
 .active {
