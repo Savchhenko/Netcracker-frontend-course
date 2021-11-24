@@ -3,7 +3,8 @@ const optionsBtnsArr = [...document.querySelectorAll(".options-btn")],
     modalBtn = document.querySelector(".modal-content-btn"),
     addRowBtn = document.querySelector(".add-row"),
     deleteRowBtn = document.querySelector(".delete-row"),
-    tableElem = document.querySelector(".table-elem");
+    tableElem = document.querySelector(".table-elem"),
+    tbodyElem = document.querySelector(".tbody");
 let inputText = document.querySelector('input[type="text"]'),
     categoryCellsArr = [...document.querySelectorAll(".category")];
 
@@ -110,6 +111,11 @@ addRowBtn.addEventListener("click", () => {
     let categoryName = "";
     while (!categoryName) {
         categoryName = prompt("Введите название категории:");
+
+        // если пользователь нажал кнопку Отмена во время вызова prompt, то действие добавление строки прерывается
+        if (categoryName === null) {
+            return ;
+        }
     }
     const tr = document.createElement("tr");
     const row = `
@@ -122,7 +128,7 @@ addRowBtn.addEventListener("click", () => {
         <td></td>
         <td></td>
     `
-    tableElem.appendChild(tr);
+    tbodyElem.appendChild(tr);
     tr.innerHTML = row;
 
     tr.addEventListener("click", (tr) => {
@@ -134,10 +140,12 @@ addRowBtn.addEventListener("click", () => {
 
 //Удаляет строку из таблицы
 deleteRowBtn.addEventListener("click", () => {
-    if (selectedRow.length == 0) {
+    console.log(selectedRow);
+    console.log((tableElem.childNodes)[3]);
+    if (selectedRow.length === 0) {
         alert("Сперва выберите строку")
     } else {
-        Array.from(tableElem.childNodes)[1].removeChild(selectedRow);
+        Array.from(tableElem.childNodes)[3].removeChild(selectedRow);
     }
 });
 
