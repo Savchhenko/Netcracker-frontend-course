@@ -1,0 +1,7 @@
+import "../task_4/task0/main0"
+import "../task_4/task1/main1"
+import "../task_4/task2/main2"
+import "../task_4/task3/main3"
+import "../task_4/task4/main4"
+import "../task_4/task5/main5"
+import "../task_4/task6/main6"
