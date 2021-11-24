@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="./main.js"></script>
 </head>
 <body>
     <div>
@@ -36,13 +37,15 @@
         <div class="modal">
             <form class="modal-form">
                 <h3>REQUEST A QUOTE</h3>
-                <input type="text" class="modal-form-input" placeholder="Full Name">
-                <input type="text" class="modal-form-input" placeholder="Email Adress">
-                <input type="text" class="modal-form-input" placeholder="Phone Number">
-                <input type="text" class="modal-form-input" placeholder="Country">
+                <input type="text" name="name" class="modal-form-input form-elem name" oninput="saveToLocalStorage(this.name, this.value)" placeholder="Name" minlength="2" required>
+                <input type="text" name="surname" class="modal-form-input form-elem surname" oninput="saveToLocalStorage(this.name, this.value)" placeholder="Surname" minlength="2" required>
+                <input type="email" name="email" class="modal-form-input form-elem email" oninput="saveToLocalStorage(this.name, this.value)" placeholder="some@some.some" required>
+                <input type="tel" name="phone" class="modal-form-input form-elem phone" oninput="saveToLocalStorage(this.name, this.value)" placeholder="+X(XXX)XX-XX-XXX">
+                <label for="message">Your message:</label>
+                <textarea class="modal-form-textarea form-elem" name="message" oninput="saveToLocalStorage(this.name, this.value)" id="message" cols="30" rows="10" required></textarea>
                 <div class="checkbox">
                     <input type="checkbox" name="acception" id="acception">
-                    <label for="acception">I accept the terms & conditions</label>
+                    <label for="acception">I accept terms & conditions</label>
                 </div>
                 <button class="form-btn" type="submit">SEND</button>
             </form>
