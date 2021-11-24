@@ -11,7 +11,7 @@ let inputText = document.querySelector('input[type="text"]'),
 let selectedCell = [];
 let selectedRow = [];
 
-//Убирает background-color с дргуих ячеек
+//Убирает background-color с других ячеек
 function deleteOtherSelectedCells() {
     const pressedCells = document.querySelectorAll(".active");
     if (pressedCells.length > 1) {
@@ -25,13 +25,26 @@ function deleteOtherSelectedCells() {
 }
 
 //Проверяет что пользователь нажал ячейку перед тем как нажать кнопки Добавить/Редактировать/Удалить запись
-function checkCellWasSelected() {
-    const pressedCells = document.querySelectorAll(".active");
-    if (pressedCells.length === 0) {
+// function checkCellWasSelected() {
+//     const pressedCells = document.querySelectorAll(".active");
+//     if (pressedCells.length === 0) {
+//         alert("Сперва нажмите на ячейку");
+//         return false;
+//     }
+//     return true;
+// }
+
+function pickPressedCells() { 
+    const pressedCells = document.querySelectorAll(".active"); 
+    return pressedCells.length === 0; 
+}
+
+function callAlertInCaseCellWasntPressed() {
+    if (pickPressedCells()) {
         alert("Сперва нажмите на ячейку");
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 //Выбирает ячейку при нажатии, задает ей background-color, который прописан в классе active
@@ -76,7 +89,7 @@ categoryCellsArr.forEach((elem) => {
 //Добавляет обработчик на каждую из трех кнопок Добавить/Редактировать/Удалить запись и определяет поведение в зависимости, какая кнопка была нажата
 optionsBtnsArr.forEach((elem) => {
     elem.addEventListener("click", () => {
-        if (checkCellWasSelected()) { 
+        if (!callAlertInCaseCellWasntPressed()) { 
             // добавление/редактирование записи
             if (!Array.from(elem.classList).includes("delete")) {
                 modalWindow.style.display = "flex";
@@ -140,8 +153,6 @@ addRowBtn.addEventListener("click", () => {
 
 //Удаляет строку из таблицы
 deleteRowBtn.addEventListener("click", () => {
-    console.log(selectedRow);
-    console.log((tableElem.childNodes)[3]);
     if (selectedRow.length === 0) {
         alert("Сперва выберите строку")
     } else {
