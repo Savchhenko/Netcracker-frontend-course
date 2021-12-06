@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: cursive;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 80vw;
+    box-shadow: 8px 7px 10px grey;
+}
+
+th, td {
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.table-title {
+    border-right: none;
+}
+
+thead {
+    font-size: 2rem;
+    background: linear-gradient(to top left, powderblue, pink);
+    color: white;
+}
+
+tr {
+    height: 7vh;
+}
+
+td {
+    cursor: pointer;
+    text-align: end;
+    font-family: sans-serif;
+    padding-right: 10px;
+}
+
+td:hover {
+    background-color: #c7c1c1;
+}
+
+.category {
+    border-left: 1px solid gray;
+}
+
+.border-left {
+    border-left: 1px solid gray;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.options button {
+    height: auto;
+    width: auto;
+    margin-right: 2vw;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    background: linear-gradient(to top left, powderblue, pink);
+}
+
+.active {
+    background-color: #c7c1c1;
+}
+
+.modal-window {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: auto;
+    height: 50vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3%;
+}
+
+.modal-content-input {
+    display: flex;
+    justify-content: center;
+    font-size: large;
+}
+
+.modal-content-input input {
+    height: 2em;
+    width: 60%;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    margin-right: 2%;
+}
+
+.modal-content-btn {
+    border-radius: 20px;
+    height: 3em;
+    width: 60%;
+    padding: 5px;
+    cursor: pointer;
+}
