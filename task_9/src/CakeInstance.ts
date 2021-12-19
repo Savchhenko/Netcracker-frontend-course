@@ -1,8 +1,8 @@
 import { CakeType } from "./CakeType";
-import { Box } from "./Box";
+import { Pack } from "./Pack";
 
 export class CakeInstance extends CakeType {
-    packaging: Box = new Box(); //composition example
+    packaging: Pack = new Pack("6ps"); //composition example, 6ps - полистирол, маркировка пластика
 
     constructor(private cakeName: string, private price: number, bakeryName: string, weight: number, caloricContent: number, filling: string[]) {
         super(bakeryName, weight, caloricContent, filling);

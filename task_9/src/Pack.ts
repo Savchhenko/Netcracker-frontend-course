@@ -1,18 +1,14 @@
 interface Box {
+    typeOfMaterial: number | string;
     packAndDecorate(cakeName: string): string;
     unpacking(cakeName: string): string;
 }
 
-interface Wrap {
-    wrapMaterial: string;
-    changeWrap(newWrapMaterial: string): void;
-}
-
-export class Pack implements Box, Wrap{
-    constructor(public wrapMaterial: string) {}
+export class Pack implements Box{
+    constructor(public typeOfMaterial: number | string) {}
 
     changeWrap(newWrapMaterial: string): void {
-        this.wrapMaterial = newWrapMaterial;
+        this.typeOfMaterial = newWrapMaterial;
     }
 
     packAndDecorate(cakeName: string) {
