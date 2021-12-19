@@ -3,6 +3,7 @@ import { Cake } from "./Cake";
 export class CakeType extends Cake {
     // public hashtagsList: string[] = ["фруктовый", "ягодный", "ореховый", "шоколадный", "творожный", "кремовый"];
     // [fruit, berry, nutty, chocolate, curd, cream] = hashtagsList;
+
     cakeType: string[] = []; 
     
     constructor(bakeryName: string, weight: number, caloricContent: number, private filling: string[]) {
