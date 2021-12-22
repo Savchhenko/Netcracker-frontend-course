@@ -1,4 +1,4 @@
-import { Bakery } from "./Bakery";
+import { Bakery } from "./bakery";
 
 export class Cake extends Bakery {
     constructor(bakeryName: string, private weight: number, private caloricContent: number) {

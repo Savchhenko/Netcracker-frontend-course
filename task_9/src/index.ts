@@ -1,7 +1,7 @@
-// import { Bakery } from "./Bakery";
-// import { Cake } from "./Cake";
-// import { CakeType } from "./CakeType";
-import { CakeInstance } from "./CakeInstance";
+// import { Bakery } from "./bakery";
+// import { Cake } from "./cake";
+// import { CakeType } from "./cake-type";
+import { CakeInstance } from "./cake-instance";
 
 const cake1: CakeInstance = new CakeInstance("Прага", 900, "Тортьяна", 1500, 2000, ["крем", "джем"]);
 console.log(cake1);
@@ -22,5 +22,5 @@ cake2.usePromocode("goodday");
 console.log("Цена торта:", cake2.getPrice); //getter
 
 
-console.log(cake1.cakeType); //work with fields with lists
+console.log(cake1.cakeType); 
 console.log(cake2.cakeType);
