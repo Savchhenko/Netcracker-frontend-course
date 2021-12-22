@@ -7,4 +7,5 @@ Date      | Name                | Discription               | Link to MR
 9.11.21 | Task_6 | Creating modal form, validation, saving data to localStorage and cookies | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/5
 11.11.21 | Task_7 | Creates an editable table | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/6
 17.11.21 | Task_8 | Work with Gulp and Webpack | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/7 |
-10.12.21 | Task_5/subtask_2 | Work with OOP, creating classes using inheritance and composition | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests 
+10.12.21 | Task_5/subtask_2 | Work with OOP, creating classes using inheritance and composition | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/8 
+23.12.21 | Task_9 | Typescript: classes, interfaces, generics, decorators | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/9
