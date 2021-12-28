@@ -19,6 +19,11 @@ list.addNodeByIndex(7, "No, that is the last");
 list.addNodeByIndex(10, {value: "Something"});
 console.log(list.toArray());
 
+list.remove(7);
+list.edit(1);
+console.log(list.toArray());
+
+
 
 // work with quickSort function
 const items: number[] = [4, 2, 6, 5, 3, 9];

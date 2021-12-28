@@ -1,6 +1,7 @@
-// узел списка
+type NodeOrNull = Node | null;
+
 class Node {
-    constructor(public data: any, public prev: Node | null = null, public next: Node | null = null) {
+    constructor(public data: any, public prev: NodeOrNull = null, public next: NodeOrNull = null) {
         this.data = data;
         this.prev = prev;
         this.next = next;
@@ -8,15 +9,15 @@ class Node {
 }
 
 export class LinkedList {
-    public head: Node | null;
-    public tail: Node | null;
+    public head: NodeOrNull;
+    public tail: NodeOrNull;
 
     constructor() {
         this.head = null;
         this.tail = null;
     }
 
-    addNodeToTheEnd(data: any): void {
+    addNodeToTheEnd <T>(data: T): void {
         const node: Node = new Node(data);
 
         if (this.tail) {
@@ -31,7 +32,7 @@ export class LinkedList {
         this.tail = node;
     }
 
-    addNodeByIndex(index: number, data: any): void {
+    addNodeByIndex <T>(index: number, data: T): void {
         const node: Node = new Node(data);
         
         if (!this.head) {
@@ -41,7 +42,7 @@ export class LinkedList {
             return;
         }
 
-        let current: Node = this.head;
+        let current: any = this.head;
 
         for (let i: number = 0; i <= index; i++) {
             if (index === 0) {
@@ -53,13 +54,13 @@ export class LinkedList {
 
             if (current == this.tail) {
                 node.prev = this.tail;
-                this.tail.next = node;
+                this.tail!.next = node;
                 this.tail = node;
                 return;
             } else if (i === index) {
                 //перезаписываем элемент
                 node.prev = current.prev;
-                current.prev.next = node;
+                current.prev!.next = node;
                 node.next = current;
                 current.prev = node;
                 return;
@@ -71,7 +72,7 @@ export class LinkedList {
 
     toArray(): Array<Node> {
         const output: Array<Node> = [];
-        let current: Node = this.head;
+        let current = this.head;
         while (current) {
             output.push(current);
             current = current.next;
@@ -79,7 +80,7 @@ export class LinkedList {
         return output;
     }
 
-    getNodeByIndex(index: number): Node {
+    getNodeByIndex(index: number): Node | undefined {
         if (!this.head) {
             console.log("Список пуст");
             return;
@@ -99,45 +100,43 @@ export class LinkedList {
         return current;
     }
 
-    edit(data: any): void {
-        let current: Node = this.getNodeByIndex(data);
+    edit (index: number): void {
+        let current = this.getNodeByIndex(index);
+
         if (!current) {
             console.log("Такого элемента в списке нет");
             return;
         }
+
         console.log(current);
 
         current.data = prompt("Введите новое значение элемента:");
     }
 
-    remove(data: any): void {
-        if (!this.head) {
+    remove(index: number): void {
+        if (!this.head || !this.getNodeByIndex(index)) {
             return;
         }
 
-        if (!this.getNodeByIndex(data)) {
-            console.log("Элемент в списке отсутствует, поэтому удалить нельзя");
-            return;
-        }
-
-        while (this.head && this.head.data === data) {
+        if (index === 0) {
             this.head = this.head.next;
-            this.head.prev = null;
+            this.head!.prev = null;
+            return;
         }
 
-        let current: Node = this.head;
+        let current = this.head.next;
 
-        if (this.tail.data === data) {
-            this.tail = this.tail.prev;
-            this.tail.next = null;
-        }
-
-        while (current.next) {
-            if (current.next.data === data) {
-                current.next = current.next.next;
-                current.next.prev = current;
+        for (let i: number = 1; i <= index; i++) {
+            if (current == this.tail) {
+                this.tail = this.tail!.prev;
+                this.tail!.next = null;
+                return;     
+            } else if (i === index) {
+                current!.prev!.next = current!.next;
+                current!.next!.prev = current!.prev; 
+                return;
             } else {
-                current = current.next;
+                current = current!.next;
             }
         }
     }
