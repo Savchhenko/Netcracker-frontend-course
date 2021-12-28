@@ -1,20 +1,23 @@
 // узел списка
 class Node {
-    constructor(data, prev = null, next = null) {
+    constructor(public data: any, public prev: Node | null = null, public next: Node | null = null) {
         this.data = data;
         this.prev = prev;
         this.next = next;
     }
 }
 
-class LinkedList {
+export class LinkedList {
+    public head: Node | null;
+    public tail: Node | null;
+
     constructor() {
         this.head = null;
         this.tail = null;
     }
 
-    addNodeToTheEnd(data) {
-        const node = new Node(data);
+    addNodeToTheEnd(data: any): void {
+        const node: Node = new Node(data);
 
         if (this.tail) {
             this.tail.next = node;
@@ -28,8 +31,8 @@ class LinkedList {
         this.tail = node;
     }
 
-    addNodeByIndex(index, data) {
-        const node = new Node(data);
+    addNodeByIndex(index: number, data: any): void {
+        const node: Node = new Node(data);
         
         if (!this.head) {
             this.head = node;
@@ -38,9 +41,9 @@ class LinkedList {
             return;
         }
 
-        let current = this.head;
+        let current: Node = this.head;
 
-        for (let i = 0; i <= index; i++) {
+        for (let i: number = 0; i <= index; i++) {
             if (index === 0) {
                 node.next = this.head;
                 this.head.prev = node;
@@ -66,9 +69,9 @@ class LinkedList {
         }
     }
 
-    toArray() {
-        const output = [];
-        let current = this.head;
+    toArray(): Array<Node> {
+        const output: Array<Node> = [];
+        let current: Node = this.head;
         while (current) {
             output.push(current);
             current = current.next;
@@ -76,15 +79,15 @@ class LinkedList {
         return output;
     }
 
-    getNodeByIndex(index) {
+    getNodeByIndex(index: number): Node {
         if (!this.head) {
             console.log("Список пуст");
             return;
         }
         
-        let current = this.head;
+        let current: Node = this.head;
 
-        for (let i = 0; i < index; i++) {
+        for (let i: number = 0; i < index; i++) {
             if (current.next) {
                 current = current.next;
             } else {
@@ -94,11 +97,10 @@ class LinkedList {
         }
 
         return current;
-        
     }
 
-    edit(data) {
-        let current = this.find(data);
+    edit(data: any): void {
+        let current: Node = this.getNodeByIndex(data);
         if (!current) {
             console.log("Такого элемента в списке нет");
             return;
@@ -108,26 +110,30 @@ class LinkedList {
         current.data = prompt("Введите новое значение элемента:");
     }
 
-    remove(data) {
+    remove(data: any): void {
         if (!this.head) {
             return;
         }
-        if (!this.find(data)) {
+
+        if (!this.getNodeByIndex(data)) {
             console.log("Элемент в списке отсутствует, поэтому удалить нельзя");
             return;
         }
+
         while (this.head && this.head.data === data) {
             this.head = this.head.next;
             this.head.prev = null;
         }
-        let current = this.head;
+
+        let current: Node = this.head;
+
         if (this.tail.data === data) {
             this.tail = this.tail.prev;
             this.tail.next = null;
         }
+
         while (current.next) {
             if (current.next.data === data) {
-                //remove
                 current.next = current.next.next;
                 current.next.prev = current;
             } else {
@@ -136,20 +142,3 @@ class LinkedList {
         }
     }
 }
-
-const list = new LinkedList();
-
-list.addNodeToTheEnd("Hi");
-list.addNodeToTheEnd("world!");
-list.addNodeToTheEnd(":)");
-list.addNodeToTheEnd("The last")
-
-console.log(list);
-console.log(list.toArray());
-
-list.addNodeByIndex(0, "WOW");
-list.addNodeByIndex(1, "Double WOW");
-list.addNodeByIndex(3, "wild");
-list.addNodeByIndex(7, "No, that is the last");
-list.addNodeByIndex(10, {value: "Something"});
-console.log(list.toArray());

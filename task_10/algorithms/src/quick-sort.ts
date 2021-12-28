@@ -26,7 +26,7 @@ function partition(items: number[], left: number, right: number): number {
     return i;
 }
 
-function quickSort(items: number[], left: number, right: number): number[] {
+export function quickSort(items: number[], left: number, right: number): number[] {
     let index: number;
 
     if (items.length > 1) {
@@ -41,10 +41,3 @@ function quickSort(items: number[], left: number, right: number): number[] {
 
     return items;
 }
-
-const items: number[] = [4, 2, 6, 5, 3, 9];
-console.log("Initial array: ", items);
-
-const result: number[] = quickSort(items, 0, items.length - 1);
-
-console.log("Array after sorting: ", result);
