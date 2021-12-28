@@ -42,7 +42,7 @@ export class LinkedList {
             return;
         }
 
-        let current: any = this.head;
+        let current = this.head;
 
         for (let i: number = 0; i <= index; i++) {
             if (index === 0) {
