@@ -8,7 +8,7 @@ export class CakeType extends Cake {
         this.filling = filling;
     }
 
-    get getCakeType() {
+    get getCakeType(): string[] {
         if (this.filling.includes("фрукты") || this.filling.includes("вишня") || this.filling.includes("банан") || this.filling.includes("персик") || this.filling.includes("ананас")) {
             this.cakeType.push("фруктовый");
         } 

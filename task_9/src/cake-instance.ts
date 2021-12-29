@@ -10,22 +10,22 @@ export class CakeInstance extends CakeType {
         this.price = price;
     }
 
-    get getCakeName() {
+    get getCakeName(): string {
         return this.cakeName;
     }
-    get getPrice() {
+    get getPrice(): number {
         return this.price;
     }
     
-    packing() {
+    packing(): string {
         return this.packaging.packAndDecorate(this.cakeName);
     }
     
-    unpacking() {
+    unpacking(): string {
         return this.packaging.unpacking(this.cakeName);
     }
 
-    usePromocode(promocode: string) {
+    usePromocode(promocode: string): number | string {
         if (promocode === "goodday") {
             return this.price -= 0.1*this.price;
         } else if (promocode === "NY2022") {

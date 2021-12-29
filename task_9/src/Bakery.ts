@@ -1,6 +1,5 @@
 export class Bakery {
-
-    constructor( private bakeryName: string ) {}
+    constructor(private bakeryName: string) {}
 
     get getBakeryName(): string {
         return this.bakeryName;

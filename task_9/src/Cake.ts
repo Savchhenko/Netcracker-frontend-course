@@ -5,7 +5,7 @@ export class Cake extends Bakery {
         super(bakeryName);
     }
 
-    get cakeCharacteristics() {
+    get cakeCharacteristics(): object {
         return {
             weight: this.weight,
             caloricContent: this.caloricContent
@@ -15,7 +15,7 @@ export class Cake extends Bakery {
         this.weight = newWeight;
     }
 
-    eat() {
+    eat(): number {
         if (this.weight) {
             console.log("Тортик кушают...");
             this.weight -= 50; // 50 grams
@@ -25,7 +25,7 @@ export class Cake extends Bakery {
         return this.weight;
     }
 
-    divideIntoPortions(numberOfPortions: number) {
+    divideIntoPortions(numberOfPortions: number): void {
         console.log(`
         Торт поделили на ${numberOfPortions} порций.
         Вес каждой порции - ${this.weight/numberOfPortions} гр
