@@ -2,7 +2,9 @@ const apiKey = "87a4e3b57fd5877a435275e9fae66ccd";
 const btnElem = document.querySelector(".btn-show");
 const inputElem = document.querySelector(".city");
 const dateElem = document.querySelector(".date");
+const characteristicsContainer = document.querySelector(".characteristics");
 const weatherContainer = document.querySelector(".weather");
+const forecastContainer = document.querySelector(".forecast");
 
 const date = new Date();
 dateElem.innerHTML = date.toLocaleDateString();
@@ -16,11 +18,14 @@ btnElem.addEventListener("click", () => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${inputElem.value}&appid=${apiKey}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            if (data.cod === "404") {
+                alert("City not found");
+            } else {
+                showWeather(data);
+                updateBtnHandler(document.querySelector(".btn-update"));
+                hourlyForecastBtnHandler(document.querySelector(".btn-hourly"), data);
+            }
             inputElem.value = "";
-            showWeather(data);
-            updateBtnHandler(document.querySelector(".btn-update"));
-            hourlyForecastBtnHandler(document.querySelector(".btn-hourly"), data);
         })
     .catch(err => console.log("Error: " + err));
 })
@@ -55,9 +60,11 @@ function updateBtnHandler(btn) {
         xhr.responseType = 'json';
         xhr.send();
         xhr.onload = function() {
-            console.log(`Загружено: ${xhr.status}`);
-            console.log(xhr.response);
-            showWeather(xhr.response);
+            if (xhr.status != 200) {
+                alert("Something was going wrong")
+            } else {
+                showWeather(xhr.response);
+            }
           };
     });
 };
@@ -83,19 +90,11 @@ calcCoord = function (coord) {
 
 function hourlyForecastBtnHandler(btn, data) {
     btn.addEventListener("click", () => {
-        console.log("The third button was pressed!");
-        console.log(data);
-
         const lon = calcCoord(data.coord.lon);
         const lat = calcCoord(data.coord.lat);
-        console.log(lon, lat);
-
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily&appid=${apiKey}`;
 
         fetchRequest(api);
-
-        weatherContainer.style.display = "none";
-
     })
 }
 
@@ -103,9 +102,42 @@ async function fetchRequest(api) {
     let response = await fetch(api);
     if (response.ok) {
         let json = await response.json();
-        console.log(json);
+        showForecast(json);
     } else {
         alert("Wrong city");
         console.log("Ошибка HTTP: " + response.status);
     }
+}
+
+function showForecast(data) {
+    forecastContainer.style.display = "flex";
+    characteristicsContainer.style.display = "none";
+    document.querySelector(".btn-hourly").style.display = "none";
+
+    for (let i = 1; i < 24; i++) {
+        const time = dateFormat(data.hourly[i].dt);
+        const temp = Math.round(data.hourly[i].temp - 273.15);;
+        const imgSrc = `http://openweathermap.org/img/wn/${data.hourly[i].weather[0].icon}@2x.png`;
+
+        const forecastItem = document.createElement("div");
+        const forecastItemContent = `
+            <div class="forecast-item">
+                <span>${time}</span>
+                <span>${temp}°C</span>
+                <img src="${imgSrc}">
+            </div>
+        `;
+        forecastContainer.appendChild(forecastItem);
+        forecastItem.innerHTML = forecastItemContent;
+    }
+}
+
+function dateFormat(num) {
+    const date = new Date(num * 1000);
+    const hours = date.getHours();
+    const minutes = "0" + date.getMinutes();
+
+    const formattedDate = hours + ':' + minutes.substring(-2);
+
+    return formattedDate;
 }
