@@ -1,10 +1,10 @@
 const apiKey = "87a4e3b57fd5877a435275e9fae66ccd";
 const btnElem = document.querySelector(".btn-show");
-const inputElem = document.querySelector(".city");
-const dateElem = document.querySelector(".date");
-const characteristicsContainer = document.querySelector(".characteristics");
-const weatherContainer = document.querySelector(".weather");
-const forecastContainer = document.querySelector(".forecast");
+const inputElem = document.querySelector(".container__main--city");
+const dateElem = document.querySelector(".container__main--date");
+const mainContainer = document.querySelector(".container__main");
+const weatherContainer = document.querySelector(".container__weather");
+const forecastContainer = document.querySelector(".container__forecast");
 
 const date = new Date();
 dateElem.innerHTML = date.toLocaleDateString();
@@ -38,10 +38,10 @@ function showWeather(data) {
     weatherContainer.style.display = "flex";
 
     weatherContainer.innerHTML = `
-        <h1 class="city-name large">${data.name}</h1>
+        <h1 class="container__weather--city-name">${data.name}</h1>
         <span>Status at ${time}</span>
-        <h2 class="temp">${temp}°C</h2>
-        <h2 class="description large">${data.weather[0].description}</h2>
+        <h2 class="container__weather--temp">${temp}°C</h2>
+        <h2>${data.weather[0].description}</h2>
         <img src=${imgSrc}>
         <div>
             <button class="btn-update btn">Update</button>
@@ -52,8 +52,7 @@ function showWeather(data) {
 
 function updateBtnHandler(btn) {
     btn.addEventListener("click", () => {
-        console.log("The second button was pressed!");
-        const cityName = document.querySelector(".city-name").innerHTML;
+        const cityName = document.querySelector(".container__weather--city-name").innerHTML;
 
         let xhr = new XMLHttpRequest();
         xhr.open("GET", `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`);
@@ -111,7 +110,7 @@ async function fetchRequest(api) {
 
 function showForecast(data) {
     forecastContainer.style.display = "flex";
-    characteristicsContainer.style.display = "none";
+    mainContainer.style.display = "none";
     document.querySelector(".btn-hourly").style.display = "none";
 
     for (let i = 1; i < 24; i++) {
@@ -121,7 +120,7 @@ function showForecast(data) {
 
         const forecastItem = document.createElement("div");
         const forecastItemContent = `
-            <div class="forecast-item">
+            <div class="container__forecast__item">
                 <span>${time}</span>
                 <span>${temp}°C</span>
                 <img src="${imgSrc}">

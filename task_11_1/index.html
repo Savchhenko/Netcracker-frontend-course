@@ -10,15 +10,13 @@
 <body>
     <main>
         <div class="container">
-            <div class="characteristics">
-                <p>Today: <span class="date"></span></p>
-                <input type="text" class="city" placeholder="Enter name of city"></input>
-                <div class="main-btn">
-                    <button class="btn-show btn">Show weather</button>
-                </div>
+            <div class="container__main">
+                <p>Today: <span class="container__main--date"></span></p>
+                <input type="text" class="container__main--city" placeholder="Enter name of city"></input>
+                <button class="btn-show btn">Show weather</button>
             </div>
-            <div class="weather"></div>
-            <div class="forecast"></div>
+            <div class="container__weather"></div>
+            <div class="container__forecast"></div>
         </div>
     </main>
     <script src="./main.js"></script>
