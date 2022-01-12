@@ -13,7 +13,8 @@ export class Cake extends Bakery {
             caloricContent: this.caloricContent
         }
     }
-    set setWeight(newWeight: number) {
+
+    public set setWeight(newWeight: number) {
         this.weight = newWeight;
     }
 

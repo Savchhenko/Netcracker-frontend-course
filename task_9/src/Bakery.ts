@@ -5,7 +5,7 @@ export class Bakery {
         return this.bakeryName;
     }
 
-    set setBakeryName(name: string) {
+    public set setBakeryName(name: string) {
         this.bakeryName = name;
     }
 }
