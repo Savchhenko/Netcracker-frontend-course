@@ -1,5 +1,5 @@
 interface Box {
-    typeOfMaterial: number | string;
+    readonly typeOfMaterial: number | string;
     packAndDecorate(cakeName: string): string;
     unpacking(cakeName: string): string;
 }
@@ -7,15 +7,15 @@ interface Box {
 export class Pack implements Box {
     constructor(public typeOfMaterial: number | string) {}
 
-    changeWrap(newWrapMaterial: string): void {
+    public changeWrap(newWrapMaterial: string): void {
         this.typeOfMaterial = newWrapMaterial;
     }
 
-    packAndDecorate(cakeName: string): string {
+    public packAndDecorate(cakeName: string): string {
         return `Торт ${cakeName} поместили в коробку и украсили бантом`;
     }
 
-    unpacking(cakeName: string): string {
+    public unpacking(cakeName: string): string {
         return `Торт ${cakeName} распаковали`;
     }
 }

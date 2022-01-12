@@ -1,32 +1,30 @@
 import { Cake } from "./cake";
 
+const cakeTypeMapping: Record<string, string[]> = {
+    "фруктовый": ["фрукты", "вишня", "банан", "персик", "ананас"],
+    "ягодный": ["клубника", "малина"],
+    "ореховый": ["орехи", "грецкий орех", "фундук"],
+    "шоколадный": ["шоколад"],
+    "творожный": ["творог"],
+    "кремовый": ["крем"]
+}
+
 export class CakeType extends Cake {
-    cakeType: string[] = []; 
+    cakeType: string[] = [];     
     
-    constructor(bakeryName: string, weight: number, caloricContent: number, private filling: string[]) {
+    constructor(bakeryName: string, 
+                weight: number, 
+                caloricContent: number, 
+                private filling: string[]) {
         super(bakeryName, weight, caloricContent);
         this.filling = filling;
     }
-
-    get getCakeType(): string[] {
-        if (this.filling.includes("фрукты") || this.filling.includes("вишня") || this.filling.includes("банан") || this.filling.includes("персик") || this.filling.includes("ананас")) {
-            this.cakeType.push("фруктовый");
-        } 
-        if (this.filling.includes("клубника") || this.filling.includes("малина")) {
-                this.cakeType.push("ягодный");
-        }
-        if (this.filling.includes("орехи") || this.filling.includes("грецкий орех") || this.filling.includes("фундук")) {
-                this.cakeType.push("ореховый");
-        }
-        if (this.filling.includes("шоколад")) {
-                this.cakeType.push("шоколадный");
-        }
-        if (this.filling.includes("творог")) {
-                this.cakeType.push("творожный");
-        }
-        if (this.filling.includes("крем")) {
-            this.cakeType.push("кремовый");
-        }   
+        
+    public get getCakeType(): string[] {
+        Object.keys(cakeTypeMapping).forEach((key) => {
+            this.filling.filter(val => cakeTypeMapping[key].includes(val)).length === cakeTypeMapping[key].length && this.cakeType.push(key);
+        });
+    
         return this.cakeType;
     }
 }

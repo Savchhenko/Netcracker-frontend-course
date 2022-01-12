@@ -1,7 +1,7 @@
 export class Bakery {
     constructor(private bakeryName: string) {}
 
-    get getBakeryName(): string {
+    public get getBakeryName(): string {
         return this.bakeryName;
     }
 
