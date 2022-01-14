@@ -1,7 +1,9 @@
 type NodeOrNull = Node | null;
 
 class Node {
-    constructor(public data: any, public prev: NodeOrNull = null, public next: NodeOrNull = null) {
+    constructor(public data: any, 
+                public prev: NodeOrNull = null, 
+                public next: NodeOrNull = null) {
         this.data = data;
         this.prev = prev;
         this.next = next;
@@ -17,7 +19,7 @@ export class LinkedList {
         this.tail = null;
     }
 
-    addNodeToTheEnd <T>(data: T): void {
+    public addNodeToTheEnd <T>(data: T): void {
         const node: Node = new Node(data);
 
         if (this.tail) {
@@ -32,7 +34,7 @@ export class LinkedList {
         this.tail = node;
     }
 
-    addNodeByIndex <T>(index: number, data: T): void {
+    public addNodeByIndex <T>(index: number, data: T): void {
         const node: Node = new Node(data);
         
         if (!this.head) {
@@ -70,7 +72,7 @@ export class LinkedList {
         }
     }
 
-    toArray(): Array<Node> {
+    public toArray(): Array<Node> {
         const output: Array<Node> = [];
         let current = this.head;
         while (current) {
@@ -80,7 +82,7 @@ export class LinkedList {
         return output;
     }
 
-    getNodeByIndex(index: number): Node | undefined {
+    public getNodeByIndex(index: number): Node | undefined {
         if (!this.head) {
             console.log("Список пуст");
             return;
@@ -100,7 +102,7 @@ export class LinkedList {
         return current;
     }
 
-    edit (index: number): void {
+    public edit (index: number): void {
         let current = this.getNodeByIndex(index);
 
         if (!current) {
@@ -113,7 +115,7 @@ export class LinkedList {
         current.data = prompt("Введите новое значение элемента:");
     }
 
-    remove(index: number): void {
+    public remove(index: number): void {
         if (!this.head || !this.getNodeByIndex(index)) {
             return;
         }

@@ -27,10 +27,8 @@ function partition(items: number[], left: number, right: number): number {
 }
 
 export function quickSort(items: number[], left: number, right: number): number[] {
-    let index: number;
-
     if (items.length > 1) {
-        index = partition(items, left, right);
+        const index: number = partition(items, left, right);
         if (left < index - 1) {
             quickSort(items, left, index - 1);
         }
