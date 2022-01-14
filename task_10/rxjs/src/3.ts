@@ -18,9 +18,3 @@ handler1$.pipe(
 .subscribe((v: Observable<Event>) => {
     body!.style.background = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}`;
 })
-
-
-
-
-
-
