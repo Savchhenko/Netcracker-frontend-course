@@ -1,4 +1,4 @@
-import {Observable, fromEvent, mergeWith} from "rxjs";
+import { Observable, fromEvent, mergeWith } from "rxjs";
 
 const body = document.getElementById("body");
 const btnsArr = [...document.querySelectorAll(".btn")];

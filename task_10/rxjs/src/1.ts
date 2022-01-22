@@ -1,5 +1,5 @@
-import {range, Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import { range, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 const output = <HTMLElement>document.querySelector(".output");
 const numbers$: Observable<number> = range(1, 100);
