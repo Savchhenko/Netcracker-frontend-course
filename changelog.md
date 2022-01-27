@@ -11,3 +11,4 @@ Date      | Name                | Discription               | Link to MR
 23.12.21 | Task_9 | Typescript: classes, interfaces, generics, decorators | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/9
 28.12.21 | Task_10_subtask_1 | Algorithms - linked list and quick sort | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/10
 07.01.21 | Task_10_subtask_2 | RxJS | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/11
+08.01.21 | Task_11_subtask_1 | Weather App; work with API, fetch, promise, xhr | https://gitlab.com/fe_nc_vonorezh_2021/fs_alexandra_savchenko/-/merge_requests/12
