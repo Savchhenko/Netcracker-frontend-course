@@ -1,11 +1,24 @@
 <div class="content" role="main">
-  
-  <h1>Приложение по поиску домашних животных</h1>
+  <h1 class="content__title">#FindYourPet</h1>
 
-  <div class="cards-container">
-    <app-pet-card></app-pet-card>
+  <div class="content__cards">
+    <div *ngFor="let item of petsList" class="cards__item" (click)="changeStatus(item.id)">
+      <h2 class="item__title">{{ item.name }}</h2>
+      <span>{{ item.type }}</span>
+      <div *ngIf="checkStatus(item.id)" class="item__details">
+        <span>Возраст: {{ item.age }} г</span>
+        <span>Вес: {{ item.weight }} кг</span>
+        <pre>- {{ item.characteristics }}</pre>
+        <div *ngIf="item.trainability; else anotherDiv" class="item__details">
+          <span>Знает команд: {{ item.numberOfCommands }}</span>
+          <p>- {{  item.commands }}</p>
+        </div>
+        <ng-template #anotherDiv>
+          <span>Команд не знает</span>
+        </ng-template>
+      </div>
+    </div>
   </div>  
 
-  <button>Скрыть котиков</button>
-  
+  <button (click)="toggleCats()" class="content__btn">{{ btnText }}</button>
 </div>

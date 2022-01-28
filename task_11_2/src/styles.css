@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+     background: radial-gradient(40% 50%, #FAECD5, #CAE4D8) ;
+     background-size: cover;
+     height: 100vh;
+     width: 100vw;
+}
